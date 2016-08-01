@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+//apply plugin: 'spring-boot' 
+//apply plugin: 'jar'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+version = '0.0.1' 
+
+jar {
+    baseName = 'service-core'
+    version =  version
+}
+group = 'com.service.core'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+	mavenCentral()
+	jcenter();
+}
+
+configurations {
+	providedRuntime
+}
+
+repositories {
+    maven { url "https://repo.spring.io/release" }
+}
+
+dependencies {
+	//compile("org.springframework.boot:spring-boot-starter")
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+	// https://mvnrepository.com/artifact/org.springframework/spring-core
+	compile group: 'org.springframework', name: 'spring-core', version: '4.3.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework/spring-beans
+	compile group: 'org.springframework', name: 'spring-beans', version: '4.3.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework/spring-context
+	compile group: 'org.springframework', name: 'spring-context', version: '3.0.4.RELEASE'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.9'
+}
