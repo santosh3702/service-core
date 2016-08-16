@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * The service configuration object to be used by all REST services.  This class takes its property values from the Spring environment, which is being populated by the Spring Cloud Config server.
  */
-@Component("esp.service.Configuration")
+@Component("configuration")
 public class ServiceConfiguration extends AbstractServiceConfiguration{
     private static Logger LOG = LoggerFactory.getLogger(ServiceConfiguration.class);
 
